@@ -9,7 +9,24 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.senocak.propertiestoyaml.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+        <toolWindow factoryClass="com.github.senocak.propertiestoyaml.toolWindow.MyToolWindowFactory" id="PropertiesToYaml" icon="AllIcons.FileTypes.Properties"/>
         <postStartupActivity implementation="com.github.senocak.propertiestoyaml.startup.MyProjectActivity" />
     </extensions>
+
+    <actions>
+        <action id="PropertiesToYaml.ConvertToYaml" 
+                class="com.github.senocak.propertiestoyaml.actions.ConvertToYamlAction"
+                text="Convert to YAML" 
+                description="Convert properties file to YAML format">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action id="PropertiesToYaml.ConvertToProperties" 
+                class="com.github.senocak.propertiestoyaml.actions.ConvertToPropertiesAction"
+                text="Convert to Properties" 
+                description="Convert YAML file to properties format">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>
