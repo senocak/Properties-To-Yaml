@@ -51,7 +51,22 @@ class MyProjectService(project: Project) {
      * @param outputFile The file to save to
      */
     fun saveYamlToFile(yamlContent: String, outputFile: File) {
+        // Ensure parent directory exists
+        outputFile.parentFile?.let { if (!it.exists()) it.mkdirs() }
+        // Write to disk
         FileWriter(outputFile).use { it.write(yamlContent) }
+        // Refresh IntelliJ VFS so the new file appears immediately
+        try {
+            val localFs = com.intellij.openapi.vfs.LocalFileSystem.getInstance()
+            val vf = localFs.refreshAndFindFileByIoFile(outputFile)
+            if (vf != null) {
+                vf.refresh(false, false)
+            } else {
+                localFs.refreshAndFindFileByIoFile(outputFile.parentFile)?.refresh(false, true)
+            }
+        } catch (_: Throwable) {
+            // ignore refresh errors
+        }
     }
 
     /**
@@ -83,8 +98,23 @@ class MyProjectService(project: Project) {
      * @param outputFile The file to save to
      */
     fun savePropertiesToFile(properties: Properties, outputFile: File) {
-        FileOutputStream(outputFile).use { 
-            properties.store(it, "Generated from YAML") 
+        // Ensure parent directory exists
+        outputFile.parentFile?.let { if (!it.exists()) it.mkdirs() }
+        // Write to disk
+        FileOutputStream(outputFile).use {
+            properties.store(it, "Generated from YAML")
+        }
+        // Refresh IntelliJ VFS so the new file appears immediately
+        try {
+            val localFs = com.intellij.openapi.vfs.LocalFileSystem.getInstance()
+            val vf = localFs.refreshAndFindFileByIoFile(outputFile)
+            if (vf != null) {
+                vf.refresh(false, false)
+            } else {
+                localFs.refreshAndFindFileByIoFile(outputFile.parentFile)?.refresh(false, true)
+            }
+        } catch (_: Throwable) {
+            // ignore refresh errors
         }
     }
 
