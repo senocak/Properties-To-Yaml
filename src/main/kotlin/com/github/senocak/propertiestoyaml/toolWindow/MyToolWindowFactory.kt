@@ -158,7 +158,7 @@ class MyToolWindowFactory : ToolWindowFactory {
                     previewTextArea.text = if (conversionMode == ConversionMode.PROPERTIES_TO_YAML) {
                         service.convertPropertiesToYaml(File(selectedFile!!.path))
                     } else {
-                        service.convertYamlToProperties(File(selectedFile!!.path)).toString()
+                        service.convertYamlToProperties(File(selectedFile!!.path))
                     }
                 } catch (e: Exception) {
                     previewTextArea.text = "Error generating preview: ${e.message}"

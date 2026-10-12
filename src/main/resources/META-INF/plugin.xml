@@ -3,6 +3,26 @@
     <id>com.github.senocak.propertiestoyaml</id>
     <name>Properties-To-Yaml</name>
     <vendor>senocak</vendor>
+    <description><![CDATA[
+        Properties-To-Yaml is a JetBrains IDE plugin that simplifies the conversion between Java properties files and YAML format.
+        <br/><br/>
+        Features:
+        <ul>
+            <li>Convert <code>.properties</code> files to <code>.yml</code> format with a simple UI</li>
+            <li>Convert <code>.yml</code> files back to <code>.properties</code> format</li>
+            <li>Preserve hierarchical structure using dot notation in property keys</li>
+            <li>Preserve comments in both conversion directions</li>
+            <li>Provide a live preview of the YAML output before saving</li>
+            <li>Maintain proper indentation and formatting in the generated YAML</li>
+        </ul>
+        <br/>
+        Usage:
+        <ol>
+            <li>Open the "PropertiesToYaml" tool window from the IDE sidebar</li>
+            <li>Right-click on a <code>.properties</code> file and select "Convert to YAML"</li>
+            <li>Right-click on a <code>.yml</code> file and select "Convert to Properties"</li>
+        </ol>
+    ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 

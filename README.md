@@ -31,6 +31,7 @@ Features:
 - Convert `.properties` files to `.yml` format with a simple UI
 - Convert `.yml` files back to `.properties` format
 - Preserves hierarchical structure using dot notation in property keys
+- Preserves comments in both conversion directions
 - Provides a live preview of the YAML output before saving
 - Maintains proper indentation and formatting in the generated YAML
 

@@ -1,5 +1,6 @@
 package com.github.senocak.propertiestoyaml.actions
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -56,4 +57,6 @@ class ConvertToPropertiesAction : AnAction() {
         e.presentation.isEnabledAndVisible = virtualFile != null && 
                 (virtualFile.extension == "yml" || virtualFile.extension == "yaml")
     }
+
+    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
 }
